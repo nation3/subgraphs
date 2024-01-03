@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: PassportIssuer
+    network: goerli
+    source:
+      address: "0x8c16926819AB30B8b29A8E23F5C230d164337093"
+      abi: PassportIssuer
+      startBlock: 6965095
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Attest
+        - Initialized
+        - OwnershipTransferred
+        - Revoke
+        - UpdateRequirements
+      abis:
+        - name: PassportIssuer
+          file: ./abis/PassportIssuer.json
+      eventHandlers:
+        - event: Attest(indexed address,indexed uint256)
+          handler: handleAttest
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Revoke(indexed address,indexed uint256)
+          handler: handleRevoke
+        - event: UpdateRequirements(uint256,uint256)
+          handler: handleUpdateRequirements
+      file: ./src/passport-issuer.ts
