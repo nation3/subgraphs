@@ -7,20 +7,15 @@ import {
   afterAll
 } from "matchstick-as/assembly/index"
 import { Address, BigInt } from "@graphprotocol/graph-ts"
-import { Attest } from "../generated/schema"
-import { Attest as AttestEvent } from "../generated/PassportIssuer/PassportIssuer"
-import { handleAttest } from "../src/passport-issuer"
-import { createAttestEvent } from "./passport-issuer-utils"
+import { handleAttest, handleRevoke } from "../src/passport-issuer"
+import { createAttestEvent, createRevokeEvent } from "./passport-issuer-utils"
 
 // Tests structure (matchstick-as >=0.5.0)
 // https://thegraph.com/docs/en/developer/matchstick/#tests-structure-0-5-0
 
-describe("Describe entity assertions", () => {
+describe("Test `Attest` Event Handling", () => {
+
   beforeAll(() => {
-    let _to = Address.fromString("0x0000000000000000000000000000000000000001")
-    let _tokenId = BigInt.fromI32(234)
-    let newAttestEvent = createAttestEvent(_to, _tokenId)
-    handleAttest(newAttestEvent)
   })
 
   afterAll(() => {
@@ -31,23 +26,50 @@ describe("Describe entity assertions", () => {
   // https://thegraph.com/docs/en/developer/matchstick/#write-a-unit-test
 
   test("Attest created and stored", () => {
+    let _to = Address.fromString("0x0000000000000000000000000000000000000001")
+    let _tokenId = BigInt.fromI32(234)
+    let newAttestEvent = createAttestEvent(_to, _tokenId)
+    handleAttest(newAttestEvent)
+    
     assert.entityCount("Attest", 1)
-
-    // 0xa16081f360e3847006db660bae1c6d1b2e17ec2a is the default address used in newMockEvent() function
+    
+    let event_id = newAttestEvent.transaction.hash.concatI32(newAttestEvent.logIndex.toI32())
     assert.fieldEquals(
       "Attest",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      event_id.toHexString(),
       "_to",
       "0x0000000000000000000000000000000000000001"
     )
     assert.fieldEquals(
       "Attest",
-      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      event_id.toHexString(),
       "_tokenId",
       "234"
     )
 
-    // More assert options:
-    // https://thegraph.com/docs/en/developer/matchstick/#asserts
+  })
+
+  test("Revoke invocation created and stored", () => {
+    let _to = Address.fromString("0x0000000000000000000000000000000000000001")
+    let _tokenId = BigInt.fromI32(234)
+    let newRevokeEvent = createRevokeEvent(_to, _tokenId)
+    handleRevoke(newRevokeEvent)
+    
+    assert.entityCount("Revoke", 1)
+    
+    let event_id = newRevokeEvent.transaction.hash.concatI32(newRevokeEvent.logIndex.toI32())
+    assert.fieldEquals(
+      "Revoke",
+      event_id.toHexString(),
+      "_to",
+      "0x0000000000000000000000000000000000000001"
+    )
+    assert.fieldEquals(
+      "Revoke",
+      event_id.toHexString(),
+      "_tokenId",
+      "234"
+    )
+
   })
 })

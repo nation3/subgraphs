@@ -9,7 +9,18 @@ import {
 } from "../generated/PassportIssuer/PassportIssuer"
 
 export function createAttestEvent(_to: Address, _tokenId: BigInt): Attest {
-  let attestEvent = changetype<Attest>(newMockEvent())
+  let mockEvent = newMockEvent()
+
+  let attestEvent = new Attest(
+    mockEvent.address,
+    mockEvent.logIndex,
+    mockEvent.transactionLogIndex,
+    mockEvent.logType,
+    mockEvent.block,
+    mockEvent.transaction,
+    [],
+    mockEvent.receipt
+  )
 
   attestEvent.parameters = new Array()
 
@@ -26,8 +37,19 @@ export function createAttestEvent(_to: Address, _tokenId: BigInt): Attest {
   return attestEvent
 }
 
-export function createInitializedEvent(version: i32): Initialized {
-  let initializedEvent = changetype<Initialized>(newMockEvent())
+export function createInitializedEvent(version: number): Initialized {
+  let mockEvent = newMockEvent()
+
+  let initializedEvent = new Initialized(
+    mockEvent.address,
+    mockEvent.logIndex,
+    mockEvent.transactionLogIndex,
+    mockEvent.logType,
+    mockEvent.block,
+    mockEvent.transaction,
+    [],
+    mockEvent.receipt
+  )
 
   initializedEvent.parameters = new Array()
 
@@ -45,8 +67,17 @@ export function createOwnershipTransferredEvent(
   previousOwner: Address,
   newOwner: Address
 ): OwnershipTransferred {
-  let ownershipTransferredEvent = changetype<OwnershipTransferred>(
-    newMockEvent()
+  let mockEvent = newMockEvent()
+
+  let ownershipTransferredEvent = new OwnershipTransferred(
+    mockEvent.address,
+    mockEvent.logIndex,
+    mockEvent.transactionLogIndex,
+    mockEvent.logType,
+    mockEvent.block,
+    mockEvent.transaction,
+    [],
+    mockEvent.receipt
   )
 
   ownershipTransferredEvent.parameters = new Array()
@@ -65,7 +96,18 @@ export function createOwnershipTransferredEvent(
 }
 
 export function createRevokeEvent(_to: Address, _tokenId: BigInt): Revoke {
-  let revokeEvent = changetype<Revoke>(newMockEvent())
+  let mockEvent = newMockEvent()
+
+  let revokeEvent = new Revoke(
+    mockEvent.address,
+    mockEvent.logIndex,
+    mockEvent.transactionLogIndex,
+    mockEvent.logType,
+    mockEvent.block,
+    mockEvent.transaction,
+    [],
+    mockEvent.receipt
+  )
 
   revokeEvent.parameters = new Array()
 
@@ -86,7 +128,18 @@ export function createUpdateRequirementsEvent(
   claimRequiredBalance: BigInt,
   revokeUnderBalance: BigInt
 ): UpdateRequirements {
-  let updateRequirementsEvent = changetype<UpdateRequirements>(newMockEvent())
+  let mockEvent = newMockEvent()
+
+  let updateRequirementsEvent = new UpdateRequirements(
+    mockEvent.address,
+    mockEvent.logIndex,
+    mockEvent.transactionLogIndex,
+    mockEvent.logType,
+    mockEvent.block,
+    mockEvent.transaction,
+    [],
+    mockEvent.receipt
+  )
 
   updateRequirementsEvent.parameters = new Array()
 
