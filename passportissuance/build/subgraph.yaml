@@ -1,0 +1,38 @@
+specVersion: 0.0.5
+description: Tracks revocation and issuance of Citizen Passports
+repository: https://github.com/nation3/subgraphs/passportissuance
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: PassportIssuer
+    network: mainnet
+    source:
+      address: "0x279c0b6bfCBBA977eaF4ad1B2FFe3C208aa068aC"
+      abi: PassportIssuer
+      startBlock: 14866328
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Attest
+        - Initialized
+        - OwnershipTransferred
+        - Revoke
+        - UpdateRequirements
+      abis:
+        - name: PassportIssuer
+          file: PassportIssuer/abis/PassportIssuer.json
+      eventHandlers:
+        - event: Attest(indexed address,indexed uint256)
+          handler: handleAttest
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Revoke(indexed address,indexed uint256)
+          handler: handleRevoke
+        - event: UpdateRequirements(uint256,uint256)
+          handler: handleUpdateRequirements
+      file: PassportIssuer/PassportIssuer.wasm

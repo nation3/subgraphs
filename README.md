@@ -35,3 +35,33 @@ Refer to the following guide from [The Graph's docs](https://thegraph.com/docs/e
 ## Contributing
 
 Refer to [this document from The Graph's docs](https://thegraph.com/docs/en/developing/creating-a-subgraph/) on how to set up your development environment for making changes to, and deploying new, subgraphs.
+
+## Testing
+
+Two options are available for testing:
+
+1. [Local Graph deployment (integration testing)](/#Local)
+2. [Matchstick unit tests](/#Matchstick)
+
+### Local
+
+To test your changes to the subgraph locally you will need a local IPFS Gateway for the subgraph to deploy files to.
+
+Refer to [this guide](https://docs.ipfs.tech/how-to/command-line-quick-start/) to learn how to do so and ensure your gateway points to `http://localhost:5001`.
+
+Then run the following commands in the subgraph's directory (e.g. the [PassportIssuer](./passportissuance/) subgraph directory):
+
+```console
+npm run codegen
+npm run build
+npm run create-local
+npm run deploy-local
+```
+
+### [Matchstick](https://github.com/LimeChain/matchstick/blob/main/README.md)
+
+Simply run the following command to run the available tests in their respective subgraph directories (e.g. [PassportIssuer](./passportissuance/)):
+
+```console
+npm run test
+```
