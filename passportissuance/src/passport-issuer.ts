@@ -1,13 +1,11 @@
 import {
   Attest as AttestEvent,
-  Initialized as InitializedEvent,
   OwnershipTransferred as OwnershipTransferredEvent,
   Revoke as RevokeEvent,
   UpdateRequirements as UpdateRequirementsEvent
 } from "../generated/PassportIssuer/PassportIssuer"
 import {
   Attest,
-  Initialized,
   OwnershipTransferred,
   Revoke,
   UpdateRequirements
@@ -19,19 +17,6 @@ export function handleAttest(event: AttestEvent): void {
   )
   entity._to = event.params._to
   entity._tokenId = event.params._tokenId
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleInitialized(event: InitializedEvent): void {
-  let entity = new Initialized(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.version = event.params.version
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
