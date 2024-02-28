@@ -1,4 +1,4 @@
-# 🌐 subgraphs
+# 🌐 Subgraphs
 
 Subgraphs for Nation3 smart contracts
 
@@ -19,6 +19,10 @@ Tracks Passport revocations. Initiated by [`revoke(address)`](https://github.com
 `event UpdateRequirements(uint256 claimRequiredBalance, uint256 revokeUnderBalance);`
 
 Tracks changes to Passport issuance params. Initiated by [`setParams(uint256, uin256)`](https://github.com/nation3/foundations/blob/main/src/passport/PassportIssuer.sol#L162)
+
+### ⚖️ Agreements
+
+https://github.com/nation3/agreements-contracts/tree/main/packages/subgraph
 
 ## Querying Subgraphs
 
