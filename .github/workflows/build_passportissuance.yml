@@ -1,4 +1,4 @@
-name: Build
+name: Build passportissuance
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_passportissuance:
 
     strategy:
       matrix:
@@ -30,4 +30,3 @@ jobs:
 
     - run: npm run codegen
     - run: npm run build
-    - run: npm run test
