@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build_passportissuance:
+  build:
 
     strategy:
       matrix:
