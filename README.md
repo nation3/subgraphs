@@ -32,6 +32,10 @@ Refer to the latest deployment's query URL on the following N3 subgraph pages:
 
 https://thegraph.com/hosted-service/subgraph/nation3/passportissuance
 
+### ⚖️ Agreements
+
+https://github.com/nation3/agreements-contracts/blob/main/packages/subgraph/package.json
+
 ---
 
 Refer to the following guide from [The Graph's docs](https://thegraph.com/docs/en/querying/querying-the-graph/) on how to execute a query remotely.
