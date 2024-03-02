@@ -30,11 +30,12 @@ Refer to the latest deployment's query URL on the following N3 subgraph pages:
 
 ### 🛂 PassportIssuer
 
-https://thegraph.com/hosted-service/subgraph/nation3/passportissuance
+- Mainnet: https://thegraph.com/hosted-service/subgraph/nation3/passportissuance
 
 ### ⚖️ Agreements
 
-See https://github.com/nation3/agreements-contracts/blob/main/packages/subgraph/package.json
+- Mainnet: https://thegraph.com/hosted-service/subgraph/nation3/nation3-agreements-mainnet
+- Sepolia: https://thegraph.com/hosted-service/subgraph/nation3/nation3-agreements-sepolia
 
 ---
 
