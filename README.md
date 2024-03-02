@@ -8,17 +8,17 @@ Subgraphs for Nation3 smart contracts
 
 This subgraph tracks the following events from the Nation3 [`PassportIssuer`](https://github.com/nation3/foundations/blob/main/src/passport/PassportIssuer.sol) contract:
 
-`event Attest(address indexed _to, uint256 indexed _tokenId);`
+- `event Attest(address indexed _to, uint256 indexed _tokenId);`
 
-Tracks Passport issuance. Initiated by [`claim(uint8, bytes32, bytes32)`](https://github.com/nation3/foundations/blob/main/src/passport/PassportIssuer.sol#L131)
+  Tracks Passport issuance. Initiated by [`claim(uint8, bytes32, bytes32)`](https://github.com/nation3/foundations/blob/main/src/passport/PassportIssuer.sol#L131)
 
-`event Revoke(address indexed _to, uint256 indexed _tokenId);`
+- `event Revoke(address indexed _to, uint256 indexed _tokenId);`
 
-Tracks Passport revocations. Initiated by [`revoke(address)`](https://github.com/nation3/foundations/blob/main/src/passport/PassportIssuer.sol#L150).
+  Tracks Passport revocations. Initiated by [`revoke(address)`](https://github.com/nation3/foundations/blob/main/src/passport/PassportIssuer.sol#L150).
 
-`event UpdateRequirements(uint256 claimRequiredBalance, uint256 revokeUnderBalance);`
+- `event UpdateRequirements(uint256 claimRequiredBalance, uint256 revokeUnderBalance);`
 
-Tracks changes to Passport issuance params. Initiated by [`setParams(uint256, uin256)`](https://github.com/nation3/foundations/blob/main/src/passport/PassportIssuer.sol#L162)
+  Tracks changes to Passport issuance params. Initiated by [`setParams(uint256, uin256)`](https://github.com/nation3/foundations/blob/main/src/passport/PassportIssuer.sol#L162)
 
 ### ⚖️ Agreements
 
