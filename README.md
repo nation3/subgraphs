@@ -22,7 +22,7 @@ Tracks changes to Passport issuance params. Initiated by [`setParams(uint256, ui
 
 ### ⚖️ Agreements
 
-https://github.com/nation3/agreements-contracts/tree/main/packages/subgraph
+See https://github.com/nation3/agreements-contracts/tree/main/packages/subgraph
 
 ## Querying Subgraphs
 
@@ -34,7 +34,7 @@ https://thegraph.com/hosted-service/subgraph/nation3/passportissuance
 
 ### ⚖️ Agreements
 
-https://github.com/nation3/agreements-contracts/blob/main/packages/subgraph/package.json
+See https://github.com/nation3/agreements-contracts/blob/main/packages/subgraph/package.json
 
 ---
 
